@@ -7,12 +7,14 @@ Moodle block which provides all functionality of block_course_overview, provides
 Requirements
 ------------
 
-This plugin requires Moodle 2.8+
+This plugin requires Moodle 2.9+
 
 
 Changes
 -------
 
+* 2015-08-21 - Change My Moodle to Dashboard in language pack
+* 2015-08-18 - Check compatibility for Moodle 2.9, no functionality change
 * 2015-03-21 - Bugfix: Block couldn't be placed on MyMoodle in some circumstances
 * 2015-03-20 - New Feature: Add a setting to control if the block should, when looking for teachers with the specified teacher roles, include teachers who have their role assigned in parent contexts (course category or system level)
 * 2015-02-22 - Bugfix: Teacher filter showed teachers twice or even multiple times, Thanks to Mario Wehr
@@ -77,7 +79,7 @@ See http://docs.moodle.org/en/Installing_plugins for details on installing Moodl
 Placement
 ---------
 
-block_course_overview_campus is used ideally as sticky block and placed on your frontpage (and mymoodle page, if your moodle instance uses this pagetype).
+block_course_overview_campus is used ideally as sticky block and placed on your frontpage (and / or Dashboard page).
 
 See http://docs.moodle.org/en/Block_settings#Making_a_block_sticky_throughout_the_whole_site for details about sticky blocks
 
