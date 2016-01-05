@@ -1,4 +1,11 @@
-YUI.add('moodle-block_course_overview_campus-hidenews', function(Y) {
+/**
+ * Block "course overview (campus)" - YUI code for hiding course news
+ *
+ * @package     block
+ * @subpackage  block_course_overview_campus
+ * @copyright   2013 Alexander Bias, University of Ulm <alexander.bias@uni-ulm.de>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 var HideNews = function() {
     HideNews.superclass.constructor.apply(this, arguments);
@@ -41,6 +48,4 @@ M.block_course_overview_campus = M.block_course_overview_campus || {};
 // Initialisation function
 M.block_course_overview_campus.initHideNews = function(params) {
     return new HideNews(params);
-}
-
-}, '@VERSION@', {requires:['base','node']});
+};

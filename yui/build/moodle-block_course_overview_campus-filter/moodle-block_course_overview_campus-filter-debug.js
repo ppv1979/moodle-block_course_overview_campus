@@ -1,22 +1,31 @@
-YUI.add('moodle-block_course_overview_campus-filter', function(Y) {
+YUI.add('moodle-block_course_overview_campus-filter', function (Y, NAME) {
+
+/**
+ * Block "course overview (campus)" - YUI code for filtering courses
+ *
+ * @package     block
+ * @subpackage  block_course_overview_campus
+ * @copyright   2013 Alexander Bias, University of Ulm <alexander.bias@uni-ulm.de>
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 var Filter = function() {
     Filter.superclass.constructor.apply(this, arguments);
 };
 Filter.prototype = {
     initializer : function() {
-        var nodeFilterTerm = Y.one('#coc-filterterm')
-        if(nodeFilterTerm != null) {
+        var nodeFilterTerm = Y.one('#coc-filterterm');
+        if(nodeFilterTerm !== null) {
             nodeFilterTerm.on('change', this.filterTerm, this);
         }
 
-        var nodeFilterTeacher = Y.one('#coc-filterteacher')
-        if(nodeFilterTeacher != null) {
+        var nodeFilterTeacher = Y.one('#coc-filterteacher');
+        if(nodeFilterTeacher !== null) {
             nodeFilterTeacher.on('change', this.filterTeacher, this);
         }
 
-        var nodeFilterCategory = Y.one('#coc-filtercategory')
-        if(nodeFilterCategory != null) {
+        var nodeFilterCategory = Y.one('#coc-filtercategory');
+        if(nodeFilterCategory !== null) {
             nodeFilterCategory.on('change', this.filterCategory, this);
         }
     },
@@ -71,6 +80,7 @@ M.block_course_overview_campus = M.block_course_overview_campus || {};
 // Initialisation function
 M.block_course_overview_campus.initFilter = function() {
     return new Filter();
-}
+};
 
-}, '@VERSION@', {requires:['base','node']});
+
+}, '@VERSION@', {"requires": ["base", "node"]});
