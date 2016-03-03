@@ -17,16 +17,15 @@
 /**
  * Block "course overview (campus)" - Version file
  *
- * @package     block
- * @subpackage  block_course_overview_campus
- * @copyright   2013 Alexander Bias, University of Ulm <alexander.bias@uni-ulm.de>
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    block_course_overview_campus
+ * @copyright  2013 Alexander Bias, University of Ulm <alexander.bias@uni-ulm.de>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_course_overview_campus';
-$plugin->version = 2015111600;
-$plugin->release = '3.0 (Build: 2016010100)';
+$plugin->version = 2016030200;
+$plugin->release = 'v3.0-r2';
 $plugin->requires = 2015111600;
 $plugin->maturity = MATURITY_STABLE;
