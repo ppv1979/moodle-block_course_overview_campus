@@ -463,20 +463,47 @@ class block_course_overview_campus extends block_base {
 
                 // Teacher information
                 if ($coc_config->teachercoursefilter == true || $coc_config->secondrowshowteachername == true) {
+
                     // Get course teachers based on global teacher roles
                     if (count($teacherroles) > 0) {
+
+                        // Check if we have to check for suspended teachers
+                        if ($coc_config->teacherroleshidesuspended == 1) {
+                            // Build extra where clause for SQL query
+                            $now = round(time(), -2); // improves db caching
+                            $extrawhere = 'ue.status = '.ENROL_USER_ACTIVE.' AND e.status = '.ENROL_INSTANCE_ENABLED.' AND ue.timestart < '.$now.' AND (ue.timeend = 0 OR ue.timeend > '.$now.')';
+                        }
+
                         // Check if we have to include teacher roles from parent contexts
                         // If yes
                         if ($coc_config->teacherrolesparent == 1) {
-                            $courseteachers = get_role_users($teacherroles, $context, true, 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname');
+                            // If we have to check for suspended teachers
+                            if ($coc_config->teacherroleshidesuspended == 1) {
+                                $courseteachers = get_role_users($teacherroles, $context, true, 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname', false, '', '', '', $extrawhere);
+                            } 
+                            else {
+                                $courseteachers = get_role_users($teacherroles, $context, true, 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname');
+                            }
                         }
                         // If no
                         else if ($coc_config->teacherrolesparent == 2) {
-                            $courseteachers = get_role_users($teacherroles, $context, false, 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname');
+                            // If we have to check for suspended teachers
+                            if ($coc_config->teacherroleshidesuspended == 1) {
+                                $courseteachers = get_role_users($teacherroles, $context, false, 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname', false, '', '', '', $extrawhere);
+                            } 
+                            else {
+                                $courseteachers = get_role_users($teacherroles, $context, false, 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname');
+                            }
                         }
                         // If depending on moodle/course:reviewotherusers capability
                         else if ($coc_config->teacherrolesparent == 3) {
-                            $courseteachers = get_role_users($teacherroles, $context, has_capability('moodle/course:reviewotherusers', $context), 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname');
+                            // If we have to check for suspended teachers
+                            if ($coc_config->teacherroleshidesuspended == 1) {
+                                $courseteachers = get_role_users($teacherroles, $context, has_capability('moodle/course:reviewotherusers', $context), 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname', false, '', '', '', $extrawhere);
+                            } 
+                            else {
+                                $courseteachers = get_role_users($teacherroles, $context, has_capability('moodle/course:reviewotherusers', $context), 'ra.id, u.id, u.lastname, u.firstname, r.sortorder', 'u.lastname, u.firstname');
+                            }
                         }
                         // Should not happen
                         else {
