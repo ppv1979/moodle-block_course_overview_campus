@@ -4,8 +4,16 @@ moodle-block_course_overview_campus
 Changes
 -------
 
-### Unreleased
+### v3.2-r2
 
+* 2017-01-27 - Bugfix: Set filter correctly after using the browser's back functionality - Credits to Davo Smith
+
+### v3.2-r1
+
+* 2017-01-17 - Bugfix: Top level category filter did not show lower-level courses on first page load
+* 2017-01-16 - Adapt course list appearance to Bootstrap 4 (used by theme_boost)
+* 2017-01-16 - Check compatibility for Moodle 3.2, no functionality change
+* 2017-01-16 - Convert YUI to jQuery + AMD - Credits to Davo Smith
 * 2017-01-12 - Move Changelog from README.md to CHANGES.md
 
 ### v3.1-r2
